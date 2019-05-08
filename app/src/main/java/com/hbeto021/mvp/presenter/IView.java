@@ -11,6 +11,8 @@ public interface IView {
 
     void getEmailDetais(String emailDetails);
 
-    void resetFields();
+    void resetEdtFields();
+
+    void resetTvFields();
 
 }

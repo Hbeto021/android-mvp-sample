@@ -18,8 +18,6 @@ public class MainActivity extends AppCompatActivity implements IView {
 
     private EditText edtRecipient, edtSubject, edtMessage;
     private TextView tvEmailDetails;
-
-
     private IPresenter presenter;
 
     @Override
@@ -43,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements IView {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvEmailDetails.setText("");
                 presenter.sendEmail(edtRecipient.getText().toString(), edtSubject.getText().toString(),
                         edtMessage.getText().toString());
             }
@@ -61,9 +58,14 @@ public class MainActivity extends AppCompatActivity implements IView {
     }
 
     @Override
-    public void resetFields() {
+    public void resetEdtFields() {
         edtRecipient.setText("");
         edtSubject.setText("");
         edtMessage.setText("");
+    }
+
+    @Override
+    public void resetTvFields() {
+        tvEmailDetails.setText("");
     }
 }

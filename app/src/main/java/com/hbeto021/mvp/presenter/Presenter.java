@@ -21,6 +21,9 @@ public class Presenter implements IPresenter {
 
     @Override
     public void sendEmail(String recipient, String subject, String message) {
+
+        view.resetTvFields();
+
         Email email = new Email(recipient, subject, message);
         if (email.fieldsAreComplete()) {
             if (email.recipientIsValid()) {
@@ -28,7 +31,7 @@ public class Presenter implements IPresenter {
                 email.setDate(new Date(System.currentTimeMillis()));
                 view.getMessageToUser("Email sent with success.");
                 view.getEmailDetais(email.toString());
-                view.resetFields();
+                view.resetEdtFields();
             } else {
                 view.getMessageToUser("Recipient email is not a correct email, please insert a correct.");
             }
