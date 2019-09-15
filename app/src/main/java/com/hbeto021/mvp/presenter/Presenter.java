@@ -1,9 +1,9 @@
 package com.hbeto021.mvp.presenter;
 
 import com.hbeto021.mvp.model.Email;
+import com.hbeto021.mvp.view.IView;
 
 import java.util.Date;
-
 
 /**
  * The middle guy between view and model
@@ -21,22 +21,20 @@ public class Presenter implements IPresenter {
 
     @Override
     public void sendEmail(String recipient, String subject, String message) {
-
-        view.resetTvFields();
-
+        view.resetDetails();
         Email email = new Email(recipient, subject, message);
         if (email.fieldsAreComplete()) {
-            if (email.recipientIsValid()) {
+            if (email.isValidEmail()) {
                 //sets the current date
                 email.setDate(new Date(System.currentTimeMillis()));
-                view.getMessageToUser("Email sent with success.");
-                view.getEmailDetais(email.toString());
-                view.resetEdtFields();
+                view.showMessageToUser("Email sent with success.");
+                view.showEmailDetails(email.toString());
+                view.resetInputs();
             } else {
-                view.getMessageToUser("Recipient email is not a correct email, please insert a correct.");
+                view.showMessageToUser("Recipient email is not a correct email, please insert a correct.");
             }
         } else {
-            view.getMessageToUser("There are some empty fields.");
+            view.showMessageToUser("There are some empty fields.");
         }
     }
 }

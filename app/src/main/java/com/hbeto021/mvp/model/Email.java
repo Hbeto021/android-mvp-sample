@@ -24,19 +24,11 @@ public class Email {
         return recipient;
     }
 
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
-
     public String getSubject() {
         if (subject == null) {
             subject = "";
         }
         return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public String getMessage() {
@@ -68,7 +60,7 @@ public class Email {
     /**
      * Validates if recipient email is correct or not
      */
-    public boolean recipientIsValid() {
+    public boolean isValidEmail() {
         return (!getSubject().isEmpty() && getRecipient().contains("@") && getRecipient().contains(".com") &&
                 !getRecipient().substring(0, getRecipient().indexOf("@")).isEmpty() &&
                 !getRecipient().substring(getRecipient().indexOf("@") + 1, getRecipient().indexOf(".com")).isEmpty());

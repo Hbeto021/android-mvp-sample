@@ -9,9 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hbeto021.mvp.R;
-import com.hbeto021.mvp.model.Email;
 import com.hbeto021.mvp.presenter.IPresenter;
-import com.hbeto021.mvp.presenter.IView;
 import com.hbeto021.mvp.presenter.Presenter;
 
 public class MainActivity extends AppCompatActivity implements IView {
@@ -25,9 +23,9 @@ public class MainActivity extends AppCompatActivity implements IView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initViews();
         presenter = new Presenter(this);
 
-        initViews();
     }
 
 
@@ -48,24 +46,24 @@ public class MainActivity extends AppCompatActivity implements IView {
     }
 
     @Override
-    public void getMessageToUser(String message) {
+    public void showMessageToUser(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void getEmailDetais(String emailDetails) {
+    public void showEmailDetails(String emailDetails) {
         tvEmailDetails.setText(emailDetails);
     }
 
     @Override
-    public void resetEdtFields() {
+    public void resetInputs() {
         edtRecipient.setText("");
         edtSubject.setText("");
         edtMessage.setText("");
     }
 
     @Override
-    public void resetTvFields() {
+    public void resetDetails() {
         tvEmailDetails.setText("");
     }
 }
